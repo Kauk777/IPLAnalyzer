@@ -28,6 +28,10 @@ public class IPLSorting {
         census.strikeRatesOfBowler));
 		this.iplMap.put(SortingFields.TOP_BOWLING_ECONOMY_RATES, Comparator.comparing(census ->
         census.economyOfBowler));
+		Comparator<IPLDAO> comparatorForBowler = Comparator.comparing(census -> census.bowlersWith4Wickets
+                +census.bowlersWith5Wickets);
+        this.iplMap.put(SortingFields.TOP_BOWLING_STRIKING_RATES_WITH_MOST_4Ws_AND_5Ws,
+                comparatorForBowler.thenComparing(compare -> compare.strikeRatesOfBowler).reversed());
 		Comparator<IPLDAO> comparator = iplMap.get(sortByFields);
 		return comparator;
 	}

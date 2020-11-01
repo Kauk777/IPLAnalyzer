@@ -151,5 +151,19 @@ public class IPLAnalyzerTest {
 		}
 	}
 	
+	@Test
+	public void givenIPLMostWicketsCSV_ShouldReturnHighestThePlayer_BestStrikeRateWith5wand4w() {
+		try {
+			IPLAnalyzer iplAnalyzer = new IPLAnalyzer(IPLAnalyzer.Innings.BOWLING);
+			iplAnalyzer.setIPLAdapter(iplAnalyzer.getAdapterObject(IPLAnalyzer.Innings.BOWLING));
+			iplAnalyzer.loadIPLData(IPLAnalyzer.Innings.BOWLING, IPL_FACTSHEET_MOSTWKTS_FILE_PATH);
+			String sortData = iplAnalyzer.sortIPLDataFields(SortingFields.TOP_BOWLING_STRIKING_RATES_WITH_MOST_4Ws_AND_5Ws);
+			IPLWickets[] iplWickets = new Gson().fromJson(sortData, IPLWickets[].class);
+			Assert.assertEquals("Lasith Malinga", iplWickets[0].playerName);
+		} catch (IPLAnalyzerException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 }
