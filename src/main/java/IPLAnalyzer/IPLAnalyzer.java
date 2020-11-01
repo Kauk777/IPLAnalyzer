@@ -21,11 +21,12 @@ import CSVBuilder.*;
 
 public class IPLAnalyzer {
 	
+	private Innings inning;
+	
 	enum Innings {
 		BATTING, BOWLING
 	}
 	
-	Innings inning;
 	
 	Map<String,IPLDAO> iplMap;
 	IPLSorting iplSort;
@@ -33,7 +34,7 @@ public class IPLAnalyzer {
 	private IPLAdapter iplAdapter;
 
 	public IPLAnalyzer(Innings inning) {
-		this.inning=inning;
+		//this.inning=inning;
 		iplSort=new IPLSorting();
 	}
 

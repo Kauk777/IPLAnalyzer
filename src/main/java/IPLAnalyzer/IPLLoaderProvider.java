@@ -6,7 +6,7 @@ public class IPLLoaderProvider {
         if (innings.equals(innings.BATTING)) {
             return new IPLRunsAdapter();
         }
-        return null;
+        return new IPLWicketAdapter();
     }
 
 }
