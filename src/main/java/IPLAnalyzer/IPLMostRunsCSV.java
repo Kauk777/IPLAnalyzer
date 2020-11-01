@@ -1,9 +1,13 @@
 package IPLAnalyzer;
 
+import java.util.Comparator;
+
 import com.opencsv.bean.CsvBindByName;
 
-public class IPLMostRunsCSV {
+public class IPLMostRunsCSV  {
 	
+	
+
 	@CsvBindByName(column = "POS", required = true)
 	public int position;
 	
@@ -17,19 +21,19 @@ public class IPLMostRunsCSV {
 	public int innings;
 	
 	@CsvBindByName(column = "NO", required = true)
-	public int no;
+	public int notOut;
 	
 	@CsvBindByName(column = "Runs", required = true)
 	public int runs;
 	
 	@CsvBindByName(column = "HS", required = true)
-	public int highestScore;
+	public String highestScore;
 	
 	@CsvBindByName(column = "Avg", required = true)
-	public double avg;
+	public double battingAverage;
 	
 	@CsvBindByName(column = "BF", required = true)
-	public int bf;
+	public int ballFaced;
 	
 	@CsvBindByName(column = "SR", required = true)
 	public double strikeRtae;
@@ -45,5 +49,27 @@ public class IPLMostRunsCSV {
 	
 	@CsvBindByName(column = "6s", required = true)
 	public int sixes;
+
+	@Override
+	public String toString() {
+		return "IPLMostRunsCSV [position=" + position + ", player=" + player + ", matches=" + matches + ", innings="
+				+ innings + ", notOut=" + notOut + ", runs=" + runs + ", highestScore=" + highestScore
+				+ ", battingAverage=" + battingAverage + ", ballFaced=" + ballFaced + ", strikeRtae=" + strikeRtae
+				+ ", hundreds=" + hundreds + ", fifties=" + fifties + ", fours=" + fours + ", sixes=" + sixes + "]";
+	}
+	
+	
+	
+	/*@Override
+	public int compareTo(IPLMostRunsCSV iplData) {
+		return this.avg.compareTo(iplData.avg);
+	}
+	
+	class IPLAnalyserComparator implements Comparator<IPLMostRunsCSV> {
+		public int compare(IPLMostRunsCSV obj1, IPLMostRunsCSV obj2) {
+			return obj1.avg.compareTo(obj2.avg);
+		}
+		
+	}*/
 
 }

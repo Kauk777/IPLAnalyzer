@@ -2,9 +2,10 @@
 package IPLAnalyzer;
 
 import org.junit.Test;
-import CSVBuilder.*;
-import org.junit.Assert;
 
+import com.google.gson.Gson;
+
+import org.junit.Assert;
 public class IPLAnalyzerTest {
    
 	private static final String IPL_FACTSHEET_MOSTRUNS_FILE_PATH="./src/test/resources/IPL2019FactsheetMostRuns.csv";
@@ -15,9 +16,22 @@ public class IPLAnalyzerTest {
 		try {
 			IPLAnalyzer iplAnalyzer=new IPLAnalyzer();
 			int numOfRecords=iplAnalyzer.loadIPLMostRunsCSV(IPL_FACTSHEET_MOSTRUNS_FILE_PATH);
-			Assert.assertEquals(100,numOfRecords);
+			Assert.assertEquals(101,numOfRecords);
 		} catch (IPLAnalyzerException e) {
 			e.printStackTrace();
 		} 
 	}
+	
+	 @Test
+	 public void givenIPLMostRunsCSV_ShouldReturnHighestThePlayer_WithHighestBattingAverage() {
+		 try {
+			 IPLAnalyzer iplAnalyzer= new IPLAnalyzer();
+			 iplAnalyzer.loadIPLMostRunsCSV(IPL_FACTSHEET_MOSTRUNS_FILE_PATH);
+			 String sortByAverage=iplAnalyzer.iplRunsSortedData("battingAverage",true);
+			 IPLMostRunsCSV[] iplRuns = new Gson().fromJson(sortByAverage, IPLMostRunsCSV[].class);
+	         Assert.assertEquals("MS Dhoni",iplRuns[0].player);
+		 } catch (IPLAnalyzerException e) {
+				e.printStackTrace();
+		} 
+	 }
 }
