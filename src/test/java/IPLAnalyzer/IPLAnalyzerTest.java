@@ -207,4 +207,18 @@ public class IPLAnalyzerTest {
 		}
 	}
 	
+	@Test
+	public void givenIPLMostWicketsCSV_ShouldReturnHighestThePlayer_BestAllRounder() {
+		try {
+			IPLAnalyzer iplAnalyzer = new IPLAnalyzer(IPLAnalyzer.Innings.BATTING);
+			iplAnalyzer.setIPLAdapter(iplAnalyzer.getAdapterObject(IPLAnalyzer.Innings.BATTING));
+			iplAnalyzer.loadIPLData(IPLAnalyzer.Innings.BATTING, IPL_FACTSHEET_MOSTWKTS_FILE_PATH, IPL_FACTSHEET_MOSTRUNS_FILE_PATH);
+			String sortData = iplAnalyzer.sortIPLDataFields(SortingFields.ALL_ROUNDER);
+			IPLWickets[] iplWickets = new Gson().fromJson(sortData, IPLWickets[].class);
+			Assert.assertEquals("Hardik Pandya", iplWickets[0].playerName);
+		} catch (IPLAnalyzerException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

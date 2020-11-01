@@ -39,6 +39,8 @@ public class IPLSorting {
                 comparatorForBestAverageBowler.thenComparing(compare -> compare.wicketsTaken));
         this.iplMap.put(SortingFields.BEST_BATTING_BOWLING_AVERAGE,
                 new BestBattingAndBowlingComparator().reversed());
+        this.iplMap.put(SortingFields.ALL_ROUNDER,
+                new AllRounderComparator().reversed());
 		Comparator<IPLDAO> comparator = iplMap.get(sortByFields);
 		return comparator;
 	}
