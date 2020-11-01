@@ -24,6 +24,8 @@ public class IPLSorting {
 		this.iplMap.put(SortingFields.MAX_RUNS_WITH_BEST_AVERAGE,
 				comparatorForRuns.thenComparing(compare -> compare.battingAverage).reversed());
 		this.iplMap.put(SortingFields.BOWLING_AVERAGE, Comparator.comparing(census -> census.averageOfBowler));
+		this.iplMap.put(SortingFields.TOP_BOWLING_STRIKING_RATES, Comparator.comparing(census ->
+        census.strikeRatesOfBowler));
 		Comparator<IPLDAO> comparator = iplMap.get(sortByFields);
 		return comparator;
 	}
