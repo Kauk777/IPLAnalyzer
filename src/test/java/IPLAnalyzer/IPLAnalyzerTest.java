@@ -94,4 +94,18 @@ public class IPLAnalyzerTest {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void givenIPLMostRunsCSV_ShouldReturnHighestThePlayer_BattingAverageWithMaxRuns() {
+		try {
+			IPLAnalyzer iplAnalyzer = new IPLAnalyzer(IPLAnalyzer.Innings.BATTING);
+			iplAnalyzer.setIPLAdapter(iplAnalyzer.getAdapterObject(IPLAnalyzer.Innings.BATTING));
+			iplAnalyzer.loadIPLData(IPLAnalyzer.Innings.BATTING, IPL_FACTSHEET_MOSTRUNS_FILE_PATH);
+			String sortByFoursAndSix = iplAnalyzer.sortIPLDataFields(SortingFields.MAX_RUNS_WITH_BEST_AVERAGE);
+			IPLMostRunsCSV[] iplRuns = new Gson().fromJson(sortByFoursAndSix, IPLMostRunsCSV[].class);
+			Assert.assertEquals("David Warner ", iplRuns[0].player);
+		} catch (IPLAnalyzerException e) {
+			e.printStackTrace();
+		}
+	}
 }
