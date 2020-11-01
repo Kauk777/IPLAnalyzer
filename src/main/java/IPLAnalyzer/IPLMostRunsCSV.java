@@ -36,7 +36,7 @@ public class IPLMostRunsCSV  {
 	public int ballFaced;
 	
 	@CsvBindByName(column = "SR", required = true)
-	public double strikeRtae;
+	public double strikeRate;
 	
 	@CsvBindByName(column = "100", required = true)
 	public int hundreds;
@@ -54,7 +54,7 @@ public class IPLMostRunsCSV  {
 	public String toString() {
 		return "IPLMostRunsCSV [position=" + position + ", player=" + player + ", matches=" + matches + ", innings="
 				+ innings + ", notOut=" + notOut + ", runs=" + runs + ", highestScore=" + highestScore
-				+ ", battingAverage=" + battingAverage + ", ballFaced=" + ballFaced + ", strikeRtae=" + strikeRtae
+				+ ", battingAverage=" + battingAverage + ", ballFaced=" + ballFaced + ", strikeRtae=" + strikeRate
 				+ ", hundreds=" + hundreds + ", fifties=" + fifties + ", fours=" + fours + ", sixes=" + sixes + "]";
 	}
 	

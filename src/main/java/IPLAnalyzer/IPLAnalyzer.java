@@ -1,5 +1,6 @@
 package IPLAnalyzer;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.lang.reflect.Field;
@@ -43,6 +44,14 @@ public class IPLAnalyzer {
 			throw new IPLAnalyzerException(e.getMessage(),IPLAnalyzerException.ExceptionType.IPL_FILE_PROBLEM);	
 		} catch(Exception e) {
 			throw new IPLAnalyzerException(e.getMessage(),IPLAnalyzerException.ExceptionType.IPL_DELIMITER_HEADER_PROBLEM);
+		}
+	}
+	
+	public void writingJsonFile(String gson, String filePath) {
+		try(FileWriter writer=new FileWriter(filePath);) {
+			writer.write(gson);
+		} catch(IOException e) {
+			e.printStackTrace();
 		}
 	}
 
