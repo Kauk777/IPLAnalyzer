@@ -15,6 +15,8 @@ public class IPLSorting {
 	 public Comparator<IPLDAO> setSortByFields(SortingFields sortByFields) {
 		 this.iplMap.put(SortingFields.MAX_4s_AND_6s, Comparator.comparing(census -> (census.fours *4+census
 	                .sixes *6), Comparator.reverseOrder()));
+		 this.iplMap.put(SortingFields.MAX_4s_AND_6s_WITH_BEST_STRIKING_RATE, Comparator.comparing(census ->
+         ((census.fours *4+census.sixes *6))/(census.ballFaced), Comparator.reverseOrder()));
 		 Comparator<IPLDAO> comparator = iplMap.get(sortByFields);
 	        return comparator; 
 	 }

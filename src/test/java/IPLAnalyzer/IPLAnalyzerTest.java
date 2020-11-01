@@ -66,4 +66,18 @@ public class IPLAnalyzerTest {
 			// e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void givenIPLMostRunsCSV_ShouldReturnHighestThePlayer_WithMaximumFoursAndSixesWithBestStrikeRate() {
+		try {
+			IPLAnalyzer iplAnalyzer = new IPLAnalyzer(IPLAnalyzer.Innings.BATTING);
+			iplAnalyzer.setIPLAdapter(iplAnalyzer.getAdapterObject(IPLAnalyzer.Innings.BATTING));
+			iplAnalyzer.loadIPLData(IPLAnalyzer.Innings.BATTING, IPL_FACTSHEET_MOSTRUNS_FILE_PATH);
+			String sortByFoursAndSix = iplAnalyzer.sortIPLDataFields(SortingFields.MAX_4s_AND_6s_WITH_BEST_STRIKING_RATE);
+			IPLMostRunsCSV[] iplRuns = new Gson().fromJson(sortByFoursAndSix, IPLMostRunsCSV[].class);
+			Assert.assertEquals("Ishant Sharma", iplRuns[0].player);
+		} catch (IPLAnalyzerException e) {
+			e.printStackTrace();
+		}
+	}
 }
