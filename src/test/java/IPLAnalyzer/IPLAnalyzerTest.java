@@ -221,4 +221,18 @@ public class IPLAnalyzerTest {
 		}
 	}
 	
+	@Test
+	public void givenIPLMostRunsCSV_ShouldReturnHighestThePlayer_BattingAverageWithMaxHundreds() {
+		try {
+			IPLAnalyzer iplAnalyzer = new IPLAnalyzer(IPLAnalyzer.Innings.BATTING);
+			iplAnalyzer.setIPLAdapter(iplAnalyzer.getAdapterObject(IPLAnalyzer.Innings.BATTING));
+			iplAnalyzer.loadIPLData(IPLAnalyzer.Innings.BATTING, IPL_FACTSHEET_MOSTRUNS_FILE_PATH);
+			String sortByFoursAndSix = iplAnalyzer.sortIPLDataFields(SortingFields.BEST_AVERAGE_WITH_HUNDREDS);
+			IPLMostRunsCSV[] iplRuns = new Gson().fromJson(sortByFoursAndSix, IPLMostRunsCSV[].class);
+			Assert.assertEquals("MS Dhoni", iplRuns[0].player);
+		} catch (IPLAnalyzerException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

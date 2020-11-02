@@ -20,6 +20,8 @@ public class IPLSorting {
 		Comparator<IPLDAO> comparatorForBattingAverage = Comparator.comparing(compare -> compare.battingAverage);
 		this.iplMap.put(SortingFields.BEST_AVERAGE_WITH_STRIKE_RATE,
 				comparatorForBattingAverage.thenComparing(compare -> compare.strikeRate).reversed());
+		this.iplMap.put(SortingFields.BEST_AVERAGE_WITH_HUNDREDS,
+				comparatorForBattingAverage.thenComparing(compare -> compare.hundreds).reversed());
 		Comparator<IPLDAO> comparatorForRuns = Comparator.comparing(compare -> compare.runs);
 		this.iplMap.put(SortingFields.MAX_RUNS_WITH_BEST_AVERAGE,
 				comparatorForRuns.thenComparing(compare -> compare.battingAverage).reversed());
