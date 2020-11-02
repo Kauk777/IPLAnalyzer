@@ -11,6 +11,7 @@ public class IPLDAO {
 	public int sixes;
 	public int ballFaced;
 	public int hundreds;
+	public int fifties;
 	public double averageOfBowler;
 	public double strikeRatesOfBowler;
 	public double economyOfBowler;
@@ -32,6 +33,7 @@ public class IPLDAO {
 		sixes = data.sixes;
 		ballFaced = data.ballFaced;
 		hundreds=data.hundreds;
+		fifties=data.fifties;
 	}
 	
 	public IPLDAO(IPLWickets data) {
@@ -52,7 +54,7 @@ public class IPLDAO {
 
 	public Object getData(IPLAnalyzer.Innings innings) {
 		if (innings.equals(IPLAnalyzer.Innings.BATTING))
-			return new IPLMostRunsCSV(player, matches, battingAverage, runs, strikeRate, fours, sixes,hundreds);
+			return new IPLMostRunsCSV(player, matches, battingAverage, runs, strikeRate, fours, sixes,hundreds,fifties);
 		if (innings.equals(IPLAnalyzer.Innings.BOWLING))
             return new IPLWickets(player, averageOfBowler, strikeRatesOfBowler, economyOfBowler,
                     bowlersWith4Wickets, bowlersWith5Wickets, wicketsTaken);

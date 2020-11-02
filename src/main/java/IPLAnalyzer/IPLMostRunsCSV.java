@@ -53,7 +53,7 @@ public class IPLMostRunsCSV {
 	}
 
 	public IPLMostRunsCSV(String player, int matches, double battingAverage, int runs, double strikeRate, int fours,
-			int sixes, int hundreds) {
+			int sixes, int hundreds, int fifties) {
 		this.player = player;
 		this.matches = matches;
 		this.battingAverage = battingAverage;
@@ -62,6 +62,7 @@ public class IPLMostRunsCSV {
 		this.fours = fours;
 		this.sixes = sixes;
 		this.hundreds = hundreds;
+		this.fifties=fifties;
 	}
 
 	@Override
